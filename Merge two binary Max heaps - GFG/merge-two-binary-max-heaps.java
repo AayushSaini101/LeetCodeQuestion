@@ -84,8 +84,8 @@ class Solution{
         int ans[]=new int[a.length+b.length];
         Iterator<Integer>it=P.iterator();
         int index=0;
-        while(it.hasNext()){
-            ans[index++]=it.next();
+        while(P.size()!=0){
+            ans[index++]=P.remove();
         }
         return ans;
     }
