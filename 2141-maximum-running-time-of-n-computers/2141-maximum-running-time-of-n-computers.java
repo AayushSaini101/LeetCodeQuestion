@@ -10,16 +10,21 @@ class Solution {
         }
         // Given n <= batteries.length, the batteries can at least run min(batteries) mins
         long left = min, right = sum;
-        while (left<right-1) {
+        long left1=0;
+        while (left<=right) {
+            
             long mid = (left+right)>>1;
             boolean canRun = checkRunTime(n, batteries, mid);
             if (canRun) {
-                left = mid;
-            } else {
+                left1=mid;
+                left = mid+1;
+                
+            }
+             else {
                 right = mid - 1;
             }
         }
-        return checkRunTime(n, batteries, right) ? right : left;
+        return checkRunTime(n, batteries, right) ? right : left1;
     }
     
     private boolean checkRunTime(int n, int[] batteries, long time) {
