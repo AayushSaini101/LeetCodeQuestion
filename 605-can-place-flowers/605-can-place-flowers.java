@@ -29,7 +29,7 @@ class Solution {
                 if(i-1>=0&&i+1<flowerbed.length&&flowerbed[i-1]==0&&flowerbed[i+1]==0&&flowerbed[i]==0){
                     --n;
                     dp[i+1]=1;
-                    dp[i-1]=1;
+                 
                     dp[i]=1;
                 }
             }
