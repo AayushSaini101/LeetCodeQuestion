@@ -1,9 +1,6 @@
 class Solution {
     public boolean count(int arr[],int windowSize){
       //window size;
-        
-       
-        
       int count=arr[windowSize-1];
         
       if(windowSize-count==count){
