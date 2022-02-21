@@ -31,7 +31,7 @@ class Solution {
 
     int minimum_coins(int N) {
 
-       List<Integer> lst = new ArrayList<>();
+      List<Integer> lst = new ArrayList<>();
 
         lst.add(1);
         lst.add(2);
