@@ -22,8 +22,8 @@ public class Solution {
         
         ListNode slow=head;
         
-        while(fast.next!=null&&fast.next.next!=null){
-              fast=fast.next.next;
+        while(fast.next!=null&&fast.next.next!=null&&fast.next.next.next!=null){
+              fast=fast.next.next.next;
               slow=slow.next;
               if(fast==slow){
             return true;
