@@ -24,7 +24,7 @@ public class Solution {
         
         while(fast.next!=null&&fast.next.next!=null&&fast.next.next.next!=null){
               fast=fast.next.next.next;
-              slow=slow.next;
+              slow=slow.next.next;
               if(fast==slow){
             return true;
         }
