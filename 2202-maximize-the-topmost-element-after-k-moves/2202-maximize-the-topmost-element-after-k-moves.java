@@ -67,7 +67,7 @@ class Solution {
            
           else{
               
-            if(remove.index+1<=k+1){
+            if(remove.index<=k){
                 int diff=k-remove.index;
                 if(diff!=1)
                 max=Math.max(max,remove.value);
