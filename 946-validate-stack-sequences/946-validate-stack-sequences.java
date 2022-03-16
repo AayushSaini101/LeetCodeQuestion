@@ -25,6 +25,9 @@ class Solution {
             }
          
         }
+        if(S.size()==0){
+            return true;
+        }
         
         
         while(index2<popped.length){
