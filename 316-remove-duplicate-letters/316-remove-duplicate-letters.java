@@ -2,7 +2,7 @@ class Solution {
   
     public String removeDuplicateLetters(String s) {
         
-     LinkedHashMap<Character,Integer>H=new LinkedHashMap<>();
+     HashMap<Character,Integer>H=new HashMap<>();
      for(int i=0;i<s.length();++i){
          char ch=s.charAt(i);
          H.put(ch,H.getOrDefault(ch,0)+1);
