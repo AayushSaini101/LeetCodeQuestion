@@ -15,15 +15,27 @@
 
 <p><span style="font-size:18px">The output of each test case should be printed in separate lines.</span></p>
 
-<p>&nbsp;</p>
+<p><span style="font-size:18px"><strong>Example:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input</strong>:
-1
-Aeabc</span>
-<span style="font-size:18px"><strong>Output</strong>: 
-***bc</span>
-<span style="font-size:18px"><strong>Explanation</strong>: </span>
-<span style="font-size:18px">The first, second, and third characters are vowels 
-that's why they are replaced by the '*' character.</span></pre>
+<p><span style="font-size:18px"><strong>Input:</strong></span></p>
+
+<pre><span style="font-size:18px"> 2</span>
+<span style="font-size:18px">Aeabc
+a*be</span>
+</pre>
+
+<p><span style="font-size:18px"><strong>Output</strong>: </span></p>
+
+<pre><span style="font-size:18px">***bc
+**b*</span></pre>
+
+<p><span style="font-size:18px"><strong>Explanation</strong>: </span> <span style="font-size:18px">The first, second, and third characters are vowels that's why they are replaced by the '*' character.</span></p>
+
+<p><strong><span style="font-size:18px">Constraint:</span></strong></p>
+
+<ul>
+	<li><span style="font-size:18px">1 &lt;= T &lt;= 10<sup>3</sup></span></li>
+	<li><span style="font-size:18px">1&lt;str.length&lt;=10<sup>3</sup></span></li>
+</ul>
  <p></p>
             </div>
