@@ -20,8 +20,10 @@
 <p><span style="font-size:18px"><strong>Input:</strong></span></p>
 
 <pre><span style="font-size:18px">2
+5
 1 2 3 4 5</span>
-<span style="font-size:18px">0</span>
+<span style="font-size:18px">0
+3</span>
 <span style="font-size:18px">5 4 2 </span>
 <span style="font-size:18px">1 </span></pre>
 
