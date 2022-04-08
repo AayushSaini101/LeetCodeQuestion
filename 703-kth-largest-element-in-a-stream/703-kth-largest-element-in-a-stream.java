@@ -3,6 +3,7 @@ class KthLargest {
     
    PriorityQueue<Integer> pq= new PriorityQueue<>();  //we need to declare public pq and kth element
     int k;
+    int max=-1;
     public KthLargest(int k, int[] nums) {
     for( int a: nums){
 				pq.add(a);           //add all the elements in pq 
@@ -11,12 +12,18 @@ class KthLargest {
     }
     
     public int add(int val) {
+        if(max!=-1){
+            if(val<max){
+                return max;
+            }
+        }
+        
         pq.add(val);         //adding value in pq  no need to take care of nums array
         
         while(pq.size()>k){      //remove all the elements which we dont need  
 				pq.remove();       // making the window of k size
         }
-        return pq.peek();   //returning the peek element of queue
+        return max=pq.peek();   //returning the peek element of queue
 
     
 }
