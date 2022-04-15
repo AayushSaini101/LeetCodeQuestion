@@ -45,6 +45,7 @@ class Solution{
 class GFG{
     
     void addElement(Queue<Integer>Q,int X){
+        
         Q.add(X);
     }
 }
