@@ -28,7 +28,7 @@ class Main{
 class GFG{
     
     String replaceVowels(String m){
-    StringBuffer ans=new StringBuffer("");
+          StringBuffer ans=new StringBuffer("");
         for(int i=0;i<m.length();++i){
             char ch=Character.toLowerCase(m.charAt(i));
             if(ch=='a'||ch=='e'||ch=='o'||ch=='i'||ch=='u'){
@@ -38,6 +38,7 @@ class GFG{
                 ans.append(m.charAt(i));
             }
         }
+        
         return ans.toString();
     }
 }
