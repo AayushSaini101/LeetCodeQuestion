@@ -1,26 +1,37 @@
-# include <iostream>
-#include <cctype>
+// { Driver Code Starts
+// Initial Template for C++
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-   int t;
-   cin>>t;
-   while(t--){
-       string s;
-         cin>>s;
+ // } Driver Code Ends
+// User function Template for C++
+class GFG {
 
-       for(int i=0;i<s.length();++i){
+  public:
+    string replaceVowels(string st) {
+           string vowels = "aeiouAEIOU";
+    for(int i=0;i<st.length();i++){
+        if(vowels.find(st[i])!= string::npos){
+            st[i] = '*';
+        }
+    }
+    return st;
+    }
+};
 
-           char ch=s[i];
-           ch=toupper(s[i]);
-           if(ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'){
-               cout<<"*";
-           }
-           else{
-               cout<<s[i];
-           }
-       }
-       cout<<endl;
+// { Driver Code Starts.
 
-   }
-}
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string st;
+
+        cin >> st;
+
+        GFG ob;
+
+        cout << ob.replaceVowels(st) << endl;
+    }
+    return 0;
+};  // } Driver Code Ends
