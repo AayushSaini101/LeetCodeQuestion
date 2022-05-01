@@ -1,12 +1,12 @@
 # Replace all vowels in the String with the * Character [Private][UnPublished]
 ## Easy 
 <div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a String containing lowercase and uppercase characters replace all vowels in the String with the "*" character.</span></p>
+                <p></p><p><span style="font-size:18px">Given a string <strong>s</strong> containing lowercase and uppercase characters, replace all vowels in the string <strong>s</strong> with the "*" character.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
 <pre><span style="font-size:18px"><strong>Input:</strong></span>
-<span style="font-size:18px">Aeabc </span>
+<span style="font-size:18px">s = "Aeabc" </span>
 <span style="font-size:18px"><strong>Output</strong>:</span>
 <span style="font-size:18px">***bc
 </span></pre>
@@ -14,7 +14,7 @@
 <p><strong><span style="font-size:18px">Example 2:</span></strong></p>
 
 <pre><span style="font-size:18px"><strong>Input:</strong></span>
-<span style="font-size:18px">**ea</span>
+<span style="font-size:18px">s = "**ea"</span>
 <span style="font-size:18px"><strong>Output</strong>:</span>
 <span style="font-size:18px">****</span></pre>
 
