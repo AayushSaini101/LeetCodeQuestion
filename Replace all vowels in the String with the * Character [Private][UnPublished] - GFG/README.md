@@ -28,7 +28,7 @@
 
 <ul>
 	<li><span style="font-size:18px">1 &lt;= T &lt;= 10<sup>3</sup></span></li>
-	<li><span style="font-size:18px">0&lt;=Length of the String&lt;=10<sup>2</sup></span></li>
+	<li><span style="font-size:18px">0&lt;=Length of the String&lt;=10<sup>5</sup></span></li>
 </ul>
  <p></p>
             </div>
