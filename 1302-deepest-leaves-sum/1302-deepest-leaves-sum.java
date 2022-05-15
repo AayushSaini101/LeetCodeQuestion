@@ -14,48 +14,32 @@
  * }
  */
 class Solution {
-    public int height(TreeNode root){
+    public void find(TreeNode root,int depth,HashMap<Integer,Integer>H){
         if(root==null){
-            return 0;
+            return;
         }
-        
-        return 1+Math.max(height(root.left),height(root.right));
+        H.put(depth,H.getOrDefault(depth,0)+root.val);
+        find(root.left,depth+1,H);
+        find(root.right,depth+1,H);
     }
     public int deepestLeavesSum(TreeNode root) {
-     
-        int height=height(root);
         
-        Queue<TreeNode>Q=new LinkedList<>();
+        HashMap<Integer,Integer>H=new HashMap<>();
         
-        Q.add(root);
+        find(root,0,H);
         
         int sum=0;
         
+        int max=0;
         
-        while(Q.size()!=0){
+        for(int elements:H.keySet()){
             
-           int size=Q.size();
-            
-            --height;
-            
-           for(int i=0;i<size;++i){
-               
-               TreeNode remove=Q.remove();
-               
-               if(remove!=null){
-                   
-                   if(height==0){
-                       
-                       sum+=remove.val;
-                   }
-                   
-                   Q.add(remove.left);
-                   
-                   Q.add(remove.right);
-               }
-           }
-               
+            if(elements>max){
+                max=elements;
+                sum=H.get(elements);
+            }
         }
+        
         return sum;
     }
 }
