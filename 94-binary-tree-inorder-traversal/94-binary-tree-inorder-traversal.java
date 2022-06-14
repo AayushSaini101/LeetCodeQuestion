@@ -15,39 +15,52 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        //Inorder transversal using the morris transversal
+         
         TreeNode reference=root;
-        //Programming to interface binding
-        List<Integer>inorder=new ArrayList<>();
+        
+        List<Integer>lst=new ArrayList<>();
         
         while(reference!=null){
-            //Left part is not present
+            
             if(reference.left==null){
-                inorder.add(reference.val);
+              
+                lst.add(reference.val);
+                
                 reference=reference.right;
+                
             }
             else{
-                //Find the rightest node from the left subtree 
-                TreeNode temp=reference.left;
                 
-                while(temp.right!=null&&temp.right!=reference){
-                       temp=temp.right;
+                //Move to the left side of the node 
+                
+                TreeNode temp=reference.left;
+            
+                //This is also formation of the preprocessing the values 
+                
+                while(temp!=null&&temp.right!=null&&temp.right!=reference){
+                    
+                    temp=temp.right;
                 }
                 
                 if(temp.right!=reference){
-                   
+                 
                     temp.right=reference;
                     
                     reference=reference.left;
+                
                 }
                 else{
-                   temp.right=null;
-                   inorder.add(reference.val);
-                   reference=reference.right;
+                    temp.right=null;
+                    lst.add(reference.val);
+                    reference=reference.right;
+                   
+                    
+                    
                 }
                 
             }
         }
-        return inorder;
+        
+        return lst;
     }
 }
