@@ -10,15 +10,7 @@
  */
 class Solution {
     
-    public void print(ListNode head){
-        
-        ListNode temp=head;
-        
-        while(temp!=null){
-            System.out.print(temp.val);
-            temp=temp.next;
-        }
-    }
+  
  
     public ListNode reverse(ListNode previousFirst,ListNode first,ListNode second,ListNode nextSecond){
         
