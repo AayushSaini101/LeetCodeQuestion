@@ -17,19 +17,24 @@ class Solution {
             }
         }
     
-  int sum( int start, int end, int left, int right,int tree[],int node){
-            if(end < left || start > right) return 0;
+    public int sum(int start,int end,int left,int right,int build[],int index){
+        
+         
+          if(end < left || start > right) return 0;
             if(left<= start && end<=right){
-                return tree[node];
+                return build[index];
             }
-            
-            int mid = start + (end - start)/2;
-            
-            int l = sum( start, mid, left, right,tree,2*node+1);
-            int r = sum( mid+1, end, left, right, tree,2*node+2);
-            
-            return l+r;
-        }
+        
+        int mid=start+(end-start)/2;
+        
+        int left1=sum(start,mid,left,right,build,2*index+1);
+        
+        int right1=sum(mid+1,end,left,right,build,2*index+2);
+        
+        return left1+right1;
+    }
+     
+           
     public List<Integer> countSmaller(int[] nums) {
         
         int value=(int)(Math.pow(10,4));
@@ -38,16 +43,12 @@ class Solution {
             
             nums[i]+=value;
         }
-    //    System.out.println(Arrays.toString(nums));
+        System.out.println(Arrays.toString(nums));
         
-           // int n = (int) Math.pow(10, 5)+1;
-           // int temp = (int)(Math.ceil(Math.log(n)/Math.log(2)));
-            //int  treeSize = (int) (2*Math.pow(2, temp) - 1);
+            int n = (int) Math.pow(10, 5)+1;
+            int temp = (int)(Math.ceil(Math.log(n)/Math.log(2)));
+            int  treeSize = (int) (2*Math.pow(2, temp) - 1);
             
-            int n=2*10000+1;
-        
-            int treeSize=4*n;
-        
             int build[] = new int[treeSize];
         
            List<Integer>answer=new ArrayList<>();
