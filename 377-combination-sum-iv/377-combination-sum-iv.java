@@ -1,5 +1,6 @@
 class Solution {
     
+    //This is problem according the top down approach
     public int find(int sum,int nums[],int target,int dp[]){
         
         if(sum==target){
@@ -28,12 +29,31 @@ class Solution {
     public int combinationSum4(int[] nums, int target) {
         
       
-        int dp[]=new int[target];
+     //Let's understand the bootom app approach to find 
         
-        Arrays.fill(dp,-1);
+      int dp[]=new int[1001];
         
-        int ways=find(0,nums,target,dp);
+    //This will be O(nums.length) approach 
+    
+      for(int elements:nums){
+          
+          dp[elements]=1;
+      }
         
-        return ways;
+      for(int i=1;i<=target;++i){
+          
+          for(int j=0;j<nums.length;++j){
+              
+              if(nums[j]<i){
+                  
+                  dp[i]+=dp[i-nums[j]];
+              }
+          }
+      }
+        
+   // System.out.println(Arrays.toString(dp));
+        
+    return dp[target];
+        
     }
 }
