@@ -15,19 +15,19 @@ class Solution {
 //         return res;
         
 //     }
-    public  void update(int l, int r, int i, int value,int build[], int node){
+//     public  void update(int l, int r, int i, int value,int build[], int node){
         
-      if(l == r) {
-            build[node] = value;
-            return;
-        }
-          int mid = (l+r)>>1;
-        if(i <= mid) update(l, mid, i,value,build, 2 * node + 1);
-        else update(mid + 1, r, i,value, build,2 * node + 2);
-        build[node]= Math.max(build[2 * node + 1], build[2 * node + 2]);
+//       if(l == r) {
+//             build[i] = value;
+//             return;
+//         }
+//           int mid = (l+r)>>1;
+//         if(i <= mid) update(l, mid, i,value,build, 2 * node + 1);
+//         else update(mid + 1, r, i,value, build,2 * node + 2);
+//         build[node]= Math.max(build[2 * node + 1], build[2 * node + 2]);
         
         
-    }
+//     }
     public int search(int l,int r,int start,int end,int build[],int index){
         
         
@@ -54,35 +54,35 @@ class Solution {
         return Math.max(leftAnswer,rightAnswer);
         
     }
-//     public  void update(int left,int right,int indexPoint,int value,int build[],int index){
+    public  void update(int left,int right,int indexPoint,int value,int build[],int index){
         
-//         //Updating the longest increasing subseqence using the concept of the segmetn tree 
+        //Updating the longest increasing subseqence using the concept of the segmetn tree 
         
-//         if(left==right){
+        if(left==right){
             
-//             build[indexPoint]=value;
+            build[index]=value;
             
-//             return ;
-//         }
+            return ;
+        }
         
         
-//         int mid=(left+right)>>1;
+        int mid=(left+right)>>1;
         
         
-//         if(indexPoint<=mid){
+        if(indexPoint<=mid){
             
-//             update(left,mid,indexPoint,value,build,2*index+1);
-//         }
-//         else{
+            update(left,mid,indexPoint,value,build,2*index+1);
+        }
+        else{
             
-//             update(mid+1,right,indexPoint,value,build,2*index+2);
+            update(mid+1,right,indexPoint,value,build,2*index+2);
             
-//         }
+        }
         
-//         build[index]=Math.max(build[2*index+1],build[2*index+2]);
+        build[index]=Math.max(build[2*index+1],build[2*index+2]);
         
         
-//     }
+    }
     public int lengthOfLIS(int[] nums, int k) {
     
         int number=100001;
