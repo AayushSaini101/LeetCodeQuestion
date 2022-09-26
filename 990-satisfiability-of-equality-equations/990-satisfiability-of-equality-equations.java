@@ -1,79 +1,71 @@
 class Solution {
     
-    public boolean findPossible(int u,int v,int parent,List<List<Integer>>lst,int dp[]){
+    public int find(int parent[],int index){
         
-        //Searching the node in the undirected graph
+        if(parent[index]==-1)return index;
         
-        boolean answer=false;
-        
-        dp[u]=1;
-        
-        for(int elements:lst.get(u)){
-            
-            if(elements!=parent&&dp[elements]==0){
-                
-                if(elements==v)return true;
-                
-                 dp[elements]=1;
-                
-                 answer|=findPossible(elements,v,u,lst,dp);
-               
-                 dp[elements]=0;
-            }
-        }
-        
-        return answer;
+        return parent[index]=find(parent,parent[index]);
     }
+    public void union(int parent[],int u,int v){
+        
+        int parentu=find(parent,u);
+        
+        int parentv=find(parent,v);
+        
+        if(parentu!=parentv){
+            
+            parent[parentv] = parentu;
+        }
+    }
+    
+    public boolean check(int parent[],int u,int v){
+        
+      
+        return find(parent,u)==find(parent,v);
+    }
+    
     public boolean equationsPossible(String[] equations) {
         
-        List<List<Integer>>lst=new ArrayList<>();
+        int build[] = new int[27];
         
-        //Consider these equations to be edges 
-        
-        for(int i=0;i<=27;++i){
-            
-            lst.add(new ArrayList<>());
-        }
-        
-       
-        
-       for(int i=0;i<equations.length;++i){
-           
-           int u=equations[i].charAt(0)-'a';
-           
-           int v=equations[i].charAt(equations[i].length()-1)-'a';
-           
-           if(equations[i].charAt(1)!='!'){
-               
-               //connect the node 
-               
-               lst.get(u).add(v);
-               
-               lst.get(v).add(u);
-           }
-       }
-        
-        //The graph has been made just we need to check wether we can reach from the not equal node in the graph 
-        
+        Arrays.fill(build,-1);
         
         for(int i=0;i<equations.length;++i){
             
-           int u=equations[i].charAt(0)-'a';
-           
-           int v=equations[i].charAt(equations[i].length()-1)-'a';
+            String str=equations[i];
             
-             int dp[]=new int[26];
-           
-           if(equations[i].charAt(1)=='!'){
-               
-               if(u==v)return false;
-               //connect the node 
-               
-               if(findPossible(u,v,-1,lst,dp))return false;
-           }
+            int u=str.charAt(0)-'a';
             
+            int v=str.charAt(str.length()-1)-'a';
+            
+            if(str.charAt(1)!='!'){
+                
+                union(build,u,v);
+            }
         }
         
+        for(int i=0;i<equations.length;++i){
+            
+            String str=equations[i];
+            
+            int u=str.charAt(0)-'a';
+            
+            int v=str.charAt(str.length()-1)-'a';
+            
+            if(str.charAt(1)=='!'){
+                
+                if(check(build,u,v)){
+                    
+                    return false;
+                }
+            }
+            
+            
+        }
         return true;
+        
+        
+        
+       
     }
 }
