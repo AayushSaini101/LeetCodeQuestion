@@ -10,32 +10,31 @@
  */
 class Solution {
     
-    private boolean check=false;
     
-    public int remove(ListNode node,int length){
+    public int remove(ListNode node,ListNode head,int length){
     
         if(node==null)return 0;
         
-        int countNodes=remove(node.next,length)+1;
+        int countNodes=remove(node.next,head,length)+1;
         
         if(countNodes==length+1){
             //Deleting the node
            node.next=node.next.next;
-            
-           check=true;
+        
         }
+        else
+            if(node==head&&countNodes==length)return -1;
      
         return countNodes;
     }
     public ListNode removeNthFromEnd(ListNode head, int n) {
         
         
-       remove(head,n);
+      if(remove(head,head,n)==-1){
+          
+          return head=head.next;
+      }
         
-       if(check==false){
-           
-           return head=head.next;
-       }
         return head;
         
     }
