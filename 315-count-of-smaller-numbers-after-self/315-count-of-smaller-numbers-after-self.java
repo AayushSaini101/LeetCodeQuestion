@@ -43,13 +43,10 @@ class Solution {
             
             nums[i]+=value;
         }
-        System.out.println(Arrays.toString(nums));
-        
-            int n = (int) Math.pow(10, 5)+1;
-            int temp = (int)(Math.ceil(Math.log(n)/Math.log(2)));
-            int  treeSize = (int) (2*Math.pow(2, temp) - 1);
+       
+          int n=4*100001;
             
-            int build[] = new int[treeSize];
+          int build[] = new int[4*200001];
         
            List<Integer>answer=new ArrayList<>();
         
