@@ -1,57 +1,52 @@
 class Solution {
-    public class SegTree{
-        private long[] tree;
-        public SegTree(int n){
-            tree=new long[4*n];
-        }
-        
-        public void u(int pos){
-            update(1,0,40000,pos,1);
-        }
-        private void update(int node,int start,int end,int pos,int val){
-            if(start==end){
-                tree[node]++;
-            } else {
-                int mid=(start+end)/2;
-                if(start<=pos && pos<=mid){
-                    update(node*2,start,mid,pos,val);
-                } else {
-                    update(node*2+1,mid+1,end,pos,val);
-                }
-                tree[node]=tree[node*2]+tree[node*2+1];
-            }
-        }
-        
-        public long q(int l,int r){
-            return query(1,0,40000,l,r);
-        }
-        private long query(int node,int start,int end,int l,int r){
-            if(end<l || r<start) return 0;
-            
-            if(start>=l && end<=r){
-                return tree[node];
-            } else {
-                int mid=(start+end)/2;
-                long left=query(2*node,start,mid,l,r);
-                long right=query(2*node+1,mid+1,end,l,r);
-                
-                return left+right;
-            }
-        }
-    }
+
+    long build[];
     
+    Solution(){
+        
+        build=new long[4*40001];
+    }
+    public void update(int l,int r,int tar,int ind){
+        
+       if(l>tar || r< tar)return;
+            if(l==r){
+                build[ind]++;
+                return;
+            }
+            int m=l+(r-l)/2;
+            update(l,m,tar,2*ind+1);
+            update(m+1,r,tar,2*ind+2);
+            build[ind]=build[2*ind+1]+build[2*ind+2];
+        
+        }
+    
+    
+    public long query(int l,int r,int ind,int low,int high){
+            if(l>high || r<low)return 0;
+            if(low<=l && high>=r){
+                return build[ind];
+            }
+            int m=l+(r-l)/2;
+            return query(l,m,2*ind+1,low,high)+query(m+1,r,2*ind+2,low,high);
+        }
     public long numberOfPairs(int[] nums1, int[] nums2, int diff) {
-        SegTree seg=new SegTree(40000);
-        int add=20000;
-        int n=nums1.length;
-        long count=0;
-        // nums1[i] - nums1[j] <= nums2[i] - nums2[j] + diff.
-        // nums1[i]-nums2[i] <= nums1[j]-nums2[j]+diff
-        for(int i=0;i<n;i++){
-            count+=seg.q(0,nums1[i]-nums2[i]+diff+add);
-            seg.u(nums1[i]-nums2[i]+add);
+        
+        
+        long countPairs=0;
+        
+        
+         int arr[]=new int[nums1.length];
+        
+         int top=40000,add=20000;
+        
+        for(int i=0;i<arr.length;++i){
+            
+            countPairs+=query(0,top,0,0,nums1[i]-nums2[i]+add+diff);
+            
+            update(0,top,nums1[i]-nums2[i]+add,0);
         }
         
-        return count;
+        return countPairs;
+        
     }
 }
