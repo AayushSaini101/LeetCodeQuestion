@@ -6,19 +6,35 @@ class Solution {
         
         build=new long[4*40001];
     }
-    public void update(int l,int r,int tar,int ind){
+    public void update(int l,int r,int tar,int index){
         
-       if(l>tar || r< tar)return;
-            if(l==r){
-                build[ind]++;
-                return;
-            }
-            int m=l+(r-l)/2;
-            update(l,m,tar,2*ind+1);
-            update(m+1,r,tar,2*ind+2);
-            build[ind]=build[2*ind+1]+build[2*ind+2];
+    
+         if(l==r){
+             
+             if(l==tar){
+                 
+                 build[index]++;
+             }
+             
+             return ;
+         }
         
-        }
+         int mid=l+(r-l)/2;
+        
+         if(tar<=mid){
+             
+             update(l,mid,tar,2*index+1);
+         }
+         else{
+             
+             update(mid+1,r,tar,2*index+2);
+         }
+        
+        build[index]=build[2*index+1]+build[2*index+2];
+             
+        
+    
+    }
     
     
     public long query(int l,int r,int ind,int low,int high){
