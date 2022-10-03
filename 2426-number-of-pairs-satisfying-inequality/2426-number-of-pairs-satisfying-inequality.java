@@ -19,7 +19,7 @@ class Solution {
              return ;
          }
         
-         int mid=l+(r-l)/2;
+         int mid=(l+r)>>1;
         
          if(tar<=mid){
              
