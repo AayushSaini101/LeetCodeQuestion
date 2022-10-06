@@ -1,34 +1,58 @@
+
+import com.sun.source.tree.Tree;
+
+import java.util.*;
+
+import java.io.*;
+
 class TimeMap {
-    HashMap<String, HashMap<Integer, String>> keyTimeMap;
+  
+    
+    HashMap<String,TreeMap<Integer,String>>H;
+    
     public TimeMap() {
-        keyTimeMap = new HashMap<String, HashMap<Integer, String>>();
+    
+        H=new HashMap<>();
     }
     
     public void set(String key, String value, int timestamp) {
-        // If the 'key' does not exist in map.
-        if (!keyTimeMap.containsKey(key)) {
-            keyTimeMap.put(key, new HashMap<Integer, String>());
-        }
         
-        // Store '(timestamp, value)' pair in 'key' bucket.
-        keyTimeMap.get(key).put(timestamp, value);
+       	if(H.containsKey(key)==false){
+			
+			H.put(key,new TreeMap<>());
+		}
+
+		H.get(key).put(timestamp,value);
+       
     }
-    
+   
+   
     public String get(String key, int timestamp) {
-        // If the 'key' does not exist in map we will return empty string.
-        if (!keyTimeMap.containsKey(key)) {
-            return "";
-        }
         
-        // Iterate on time from 'timestamp' to '1'.
-        for (int currTime = timestamp; currTime >= 1; --currTime) {
-            // If a value for current time is stored in key's bucket we return the value.
-            if (keyTimeMap.get(key).containsKey(currTime)) {
-                return keyTimeMap.get(key).get(currTime);
-            }
-        }
+  //  System.out.println(H);
         
-        // Otherwise no time <= timestamp was stored in key's bucket.
-        return ""; 
+      if(H.containsKey(key)==false){
+          
+          return "";
+      }
+      else{
+
+          TreeMap<Integer,String>t=H.get(key);
+          
+          if(t.floorKey(timestamp)==null)
+          return "";
+          
+          else{
+              return t.get(t.floorKey(timestamp));
+          }
+         
+      }
     }
 }
+
+/**
+ * Your TimeMap object will be instantiated and called as such:
+ * TimeMap obj = new TimeMap();
+ * obj.set(key,value,timestamp);
+ * String param_2 = obj.get(key,timestamp);
+ */
