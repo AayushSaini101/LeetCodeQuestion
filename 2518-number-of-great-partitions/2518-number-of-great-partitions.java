@@ -37,17 +37,17 @@ class Solution {
             return dp[index][sum];
         }
         
-        int ways = 0;
+        long ways = 0;
     
-        long skip = count(nums,index+1,sum,k, dp );
+         ways=(ways+count(nums,index+1,sum,k, dp ))%mod;
         
         long contains=0;
         
         if(sum+nums[index] < k){
             
-            contains = count(nums,index+1,sum+nums[index],k,dp);
+           ways =  (ways + count(nums,index+1,sum+nums[index],k,dp))%mod;
         }
-        return dp[index][sum] = (skip%mod + contains%mod)%mod;
+        return dp[index][sum] = ways;
     }
     public int countPartitions(int[] nums, int k) {
         
