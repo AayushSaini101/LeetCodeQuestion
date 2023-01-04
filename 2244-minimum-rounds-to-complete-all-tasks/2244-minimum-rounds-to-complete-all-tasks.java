@@ -1,28 +1,39 @@
 class Solution {
     public int minimumRounds(int[] tasks) {
+     //Either take the 2 or 3 task of the limit 
+        
         HashMap<Integer,Integer>H=new HashMap<>();
+        
         for(int elements:tasks){
+            
             H.put(elements,H.getOrDefault(elements,0)+1);
         }
-        System.out.println(H);
         
-        //Iterating on the keys of the hash map
-        int sum=0;
-        for(int key:H.keySet()){
-            if(H.get(key)<2){
-                return -1;
-            }
+      //  System.out.println(H);
+        
+        int count = 0 ;
+        
+   
+        for(int elements:H.keySet()){
+            
+            
+            int freq = H.get(elements);
+            
+            
+         
+            if(freq<2)return -1;
+            
+            if(freq%3==0)count+=freq/3;
+            
             else{
-              if(H.get(key)%3==0){
-                  sum+=H.get(key)/3;
-              }
-                else{
-                   sum+=H.get(key)/3+1;
-                }
-                    
+               
+                count+=(freq)/3+1;
             }
                 
+            
+            
         }
-        return sum;
+        
+        return count;
     }
 }
