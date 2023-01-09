@@ -26,11 +26,33 @@ class Solution {
     }
     public List<Integer> preorderTraversal(TreeNode root) {
      
-    
-        List<Integer>answer=new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
         
-         answer(root,answer);
+        Stack<TreeNode>st=new Stack<>();
+        
+        st.add(root);
+        
+        while(st.size()!=0){
+            
+            TreeNode remove = st.pop();
+            
+            if(remove == null) break;
+            
+            answer.add(remove.val);
+            
+            if(remove.right!=null){
+                
+                st.add(remove.right);
+            }
+            
+            if(remove.left!=null){
+                
+                st.add(remove.left);
+            }
+        }
         
         return answer;
+        
+   
     }
 }
