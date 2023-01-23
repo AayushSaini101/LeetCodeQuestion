@@ -9,6 +9,8 @@ class Solution {
           
           int mid=(start+end)>>1;
           
+        //  System.out.println(start+" "+end+" "+mid);
+          
           if((mid%2==0&&mid+1<nums.length&&nums[mid]==nums[mid+1])||(mid%2==1&mid-1>=0&&nums[mid-1]==nums[mid])){
               
               start=mid+1;
