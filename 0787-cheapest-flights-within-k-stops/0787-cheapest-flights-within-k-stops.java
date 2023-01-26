@@ -48,12 +48,12 @@ class Solution {
                 int edW = iter.second;
                 // if cost + edge weight is < then distance of adjacent node && stops <= k.
                 // mean we have to update our distance array.
-                if(dist[node] + edW < dist[adjNode] && stops <= k){
+                if(cost + edW < dist[adjNode] && stops <= k){
                     dist[adjNode] = cost + edW;
                     // increment the stops by 1, 
                     // adjacent node,
                     // cost + edge weight.
-                    q.add(new Tuple(stops + 1, adjNode, cost + edW));
+                    q.add(new Tuple(stops + 1, adjNode,dist[adjNode] ));
                 }
             }
         }
